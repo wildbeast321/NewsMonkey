@@ -13,6 +13,7 @@ export default class App extends Component {
       textcolor: "dark",
       headercolor: "dark",
       btnpncolor: "primary",
+      Country : "in"
     };
   }
   handleMode = () => {
@@ -36,6 +37,21 @@ export default class App extends Component {
       });
     }
   };
+  handlecountryin= ()=>{
+    this.setState({
+      Country :"in"
+    })
+  }
+  handlecountryus= ()=>{
+    this.setState({
+      Country: "us"
+    })
+  }
+  handlecountryjp=()=>{
+    this.setState({
+      Country: "jp"
+    })
+  }
 
   render() {
     return (
@@ -44,17 +60,23 @@ export default class App extends Component {
           modeName={this.state.modeName}
           mode={this.state.mode}
           textcolor={this.state.textcolor}
-          handleMode={this.handleMode} 
+          handleMode={this.handleMode}
+          handlecountryjp={this.handlecountryjp}
+          handlecountryin={this.handlecountryin}
+          handlecountryus={this.handlecountryus}
+          
         />
         <Routes>
-          <Route exact path="/Business" element={<News key="business" headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country="in" category="business"/>}/>
-          <Route exact path="/Entertainment" element={<News key="entertainment" headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country="in" category="entertainment"/>}/>
-          <Route exact path="/" element={<News key="general" headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country="in" category="general"/>}/>
-          <Route exact path="/Health" element={<News key="health" headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country="in" category="health"/>}/>
-          <Route exact path="/Science" element={<News key="science" headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country="in" category="science"/>}/>
-          <Route exact path="/Sports" element={<News key="sports" headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country="in" category="sports"/>}/>
-          <Route exact path="/Technology" element={<News key="technology" headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country="in" category="technology"/>}/>
+          <Route exact path="/Business" element={<News key={`Business/${this.state.Country}`} headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country={this.state.Country} category="business"/>}/>
+          <Route exact path="/Entertainment" element={<News key={`Entertainment/${this.state.Country}`} headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country={this.state.Country} category="entertainment"/>}/>
+          <Route exact path="/" element={<News key={`${this.state.Country}`} headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country={this.state.Country} category="general"/>}/>
+          <Route exact path="/Health" element={<News key={`Health/${this.state.Country}`} headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country={this.state.Country} category="health"/>}/>
+          <Route exact path="/Science" element={<News key={`Science/${this.state.Country}`} headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country={this.state.Country} category="science"/>}/>
+          <Route exact path="/Sports" element={<News key={`Sports/${this.state.Country}`} headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country={this.state.Country} category="sports"/>}/>
+          <Route exact path="/Technology" element={<News key={`Technology/${this.state.Country}`} headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country={this.state.Country} category="technology"/>}/>
         </Routes>
+      
+      
       </Router>
     );
   }
