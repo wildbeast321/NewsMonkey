@@ -13,7 +13,7 @@ export default class App extends Component {
       textcolor: "dark",
       headercolor: "dark",
       btnpncolor: "primary",
-      Country : "in"
+      Country: "in",
     };
   }
   handleMode = () => {
@@ -37,21 +37,21 @@ export default class App extends Component {
       });
     }
   };
-  handlecountryin= ()=>{
+  handlecountryin = () => {
     this.setState({
-      Country :"in"
-    })
-  }
-  handlecountryus= ()=>{
+      Country: "in",
+    });
+  };
+  handlecountryus = () => {
     this.setState({
-      Country: "us"
-    })
-  }
-  handlecountryjp=()=>{
+      Country: "us",
+    });
+  };
+  handlecountryjp = () => {
     this.setState({
-      Country: "jp"
-    })
-  }
+      Country: "jp",
+    });
+  };
 
   render() {
     return (
@@ -64,19 +64,107 @@ export default class App extends Component {
           handlecountryjp={this.handlecountryjp}
           handlecountryin={this.handlecountryin}
           handlecountryus={this.handlecountryus}
-          
         />
         <Routes>
-          <Route exact path="/Business" element={<News key={`Business/${this.state.Country}`} headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country={this.state.Country} category="business"/>}/>
-          <Route exact path="/Entertainment" element={<News key={`Entertainment/${this.state.Country}`} headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country={this.state.Country} category="entertainment"/>}/>
-          <Route exact path="/" element={<News key={`${this.state.Country}`} headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country={this.state.Country} category="general"/>}/>
-          <Route exact path="/Health" element={<News key={`Health/${this.state.Country}`} headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country={this.state.Country} category="health"/>}/>
-          <Route exact path="/Science" element={<News key={`Science/${this.state.Country}`} headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country={this.state.Country} category="science"/>}/>
-          <Route exact path="/Sports" element={<News key={`Sports/${this.state.Country}`} headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country={this.state.Country} category="sports"/>}/>
-          <Route exact path="/Technology" element={<News key={`Technology/${this.state.Country}`} headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country={this.state.Country} category="technology"/>}/>
+          <Route
+            exact
+            path="/Business"
+            element={
+              <News
+                key={`Business/${this.state.Country}`}
+                headercolor={this.state.headercolor}
+                btnpncolor={this.state.btnpncolor}
+                pageSize={9}
+                Country={this.state.Country}
+                category="business"
+              />
+            }
+          />
+          <Route
+            exact
+            path="/Entertainment"
+            element={
+              <News
+                key={`Entertainment/${this.state.Country}`}
+                headercolor={this.state.headercolor}
+                btnpncolor={this.state.btnpncolor}
+                pageSize={9}
+                Country={this.state.Country}
+                category="entertainment"
+              />
+            }
+          />
+          <Route
+            exact
+            path="/"
+            element={
+              <News
+                key={`${this.state.Country}`}
+                headercolor={this.state.headercolor}
+                btnpncolor={this.state.btnpncolor}
+                pageSize={9}
+                Country={this.state.Country}
+                category="general"
+              />
+            }
+          />
+          <Route
+            exact
+            path="/Health"
+            element={
+              <News
+                key={`Health/${this.state.Country}`}
+                headercolor={this.state.headercolor}
+                btnpncolor={this.state.btnpncolor}
+                pageSize={9}
+                Country={this.state.Country}
+                category="health"
+              />
+            }
+          />
+          <Route
+            exact
+            path="/Science"
+            element={
+              <News
+                key={`Science/${this.state.Country}`}
+                headercolor={this.state.headercolor}
+                btnpncolor={this.state.btnpncolor}
+                pageSize={9}
+                Country={this.state.Country}
+                category="science"
+              />
+            }
+          />
+          <Route
+            exact
+            path="/Sports"
+            element={
+              <News
+                key={`Sports/${this.state.Country}`}
+                headercolor={this.state.headercolor}
+                btnpncolor={this.state.btnpncolor}
+                pageSize={9}
+                Country={this.state.Country}
+                category="sports"
+              />
+            }
+          />
+          <Route
+            exact
+            path="/Technology"
+            element={
+              <News
+                key={`Technology/${this.state.Country}`}
+                headercolor={this.state.headercolor}
+                btnpncolor={this.state.btnpncolor}
+                pageSize={9}
+                Country={this.state.Country}
+                category="technology"
+              />
+            }
+          />
         </Routes>
-      
-      
       </Router>
     );
   }
