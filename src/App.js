@@ -1,5 +1,5 @@
 import "./App.css";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { Component } from "react";
 import Navbar from "./component/Navbar";
 import News from "./component/News";
@@ -13,7 +13,6 @@ export default class App extends Component {
       textcolor: "dark",
       headercolor: "dark",
       btnpncolor: "primary",
-     
     };
   }
   handleMode = () => {
@@ -40,22 +39,23 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <Router>
         <Navbar
           modeName={this.state.modeName}
           mode={this.state.mode}
           textcolor={this.state.textcolor}
-          handleMode={this.handleMode}
+          handleMode={this.handleMode} 
         />
-
-        <News
-          headercolor={this.state.headercolor}
-          btnpncolor={this.state.btnpncolor}
-          pageSize={9}
-          Country="in"
-          category="general"
-        />
-      </div>
+        <Routes>
+          <Route exact path="/Business" element={<News key="business" headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country="in" category="business"/>}/>
+          <Route exact path="/Entertainment" element={<News key="entertainment" headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country="in" category="entertainment"/>}/>
+          <Route exact path="/" element={<News key="general" headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country="in" category="general"/>}/>
+          <Route exact path="/Health" element={<News key="health" headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country="in" category="health"/>}/>
+          <Route exact path="/Science" element={<News key="science" headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country="in" category="science"/>}/>
+          <Route exact path="/Sports" element={<News key="sports" headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country="in" category="sports"/>}/>
+          <Route exact path="/Technology" element={<News key="technology" headercolor={this.state.headercolor} btnpncolor={this.state.btnpncolor} pageSize={9} Country="in" category="technology"/>}/>
+        </Routes>
+      </Router>
     );
   }
 }
