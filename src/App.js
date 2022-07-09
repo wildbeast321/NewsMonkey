@@ -18,6 +18,7 @@ export default class App extends Component {
       progress: 0,
     };
   }
+  apikey=process.env.REACT_APP_NEWS_API
   handleMode = () => {
     if (this.state.modeName === "Light Mode") {
       document.body.style.backgroundColor = "rgb(50,50,50)";
@@ -77,7 +78,7 @@ export default class App extends Component {
             path="/Business"
             element={
               <News
-                setProgress={this.setProgress}
+                setProgress={this.setProgress} apikey={this.apikey}
                 key={`Business/${this.state.Country}`}
                 headercolor={this.state.headercolor}
                 btnpncolor={this.state.btnpncolor}
@@ -92,7 +93,7 @@ export default class App extends Component {
             path="/Entertainment"
             element={
               <News
-                setProgress={this.setProgress}
+                setProgress={this.setProgress} apikey={this.apikey}
                 key={`Entertainment/${this.state.Country}`}
                 headercolor={this.state.headercolor}
                 btnpncolor={this.state.btnpncolor}
@@ -107,7 +108,7 @@ export default class App extends Component {
             path="/"
             element={
               <News
-                setProgress={this.setProgress}
+                setProgress={this.setProgress} apikey={this.apikey}
                 key={`${this.state.Country}`}
                 headercolor={this.state.headercolor}
                 btnpncolor={this.state.btnpncolor}
@@ -122,7 +123,7 @@ export default class App extends Component {
             path="/Health"
             element={
               <News
-                setProgress={this.setProgress}
+                setProgress={this.setProgress} apikey={this.apikey}
                 key={`Health/${this.state.Country}`}
                 headercolor={this.state.headercolor}
                 btnpncolor={this.state.btnpncolor}
@@ -137,7 +138,7 @@ export default class App extends Component {
             path="/Science"
             element={
               <News
-                setProgress={this.setProgress}
+                setProgress={this.setProgress} apikey={this.apikey}
                 key={`Science/${this.state.Country}`}
                 headercolor={this.state.headercolor}
                 btnpncolor={this.state.btnpncolor}
@@ -152,7 +153,7 @@ export default class App extends Component {
             path="/Sports"
             element={
               <News
-                setProgress={this.setProgress}
+                setProgress={this.setProgress} apikey={this.apikey}
                 key={`Sports/${this.state.Country}`}
                 headercolor={this.state.headercolor}
                 btnpncolor={this.state.btnpncolor}
@@ -167,7 +168,7 @@ export default class App extends Component {
             path="/Technology"
             element={
               <News
-                setProgress={this.setProgress}
+                setProgress={this.setProgress} apikey={this.apikey}
                 key={`Technology/${this.state.Country}`}
                 headercolor={this.state.headercolor}
                 btnpncolor={this.state.btnpncolor}

@@ -20,7 +20,7 @@ export class News extends Component {
 
   async componentDidMount() {
     this.props.setProgress(30);
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.Country}&category=${this.props.category}&apiKey=599835b49bbf487993543a0f15508904&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.Country}&category=${this.props.category}&apiKey=${this.props.apikey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({
       loading: true,
     });
@@ -42,7 +42,7 @@ export class News extends Component {
       this.props.Country
     }&category=${
       this.props.category
-    }&apiKey=599835b49bbf487993543a0f15508904&page=${
+    }&apiKey=${this.props.apikey}&page=${
       this.state.page + 1
     }&pageSize=${this.props.pageSize}`;
 
