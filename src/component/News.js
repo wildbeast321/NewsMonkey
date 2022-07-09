@@ -19,6 +19,7 @@ export class News extends Component {
   }
 
   async componentDidMount() {
+    this.props.setProgress(30);
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.Country}&category=${this.props.category}&apiKey=599835b49bbf487993543a0f15508904&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({
       loading: true,
@@ -28,11 +29,11 @@ export class News extends Component {
     this.setState({
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
-    });
-    this.setState({
       loading: false,
     });
+
     console.log(parsedData);
+    this.props.setProgress(100);
   }
 
   fetchMoreData = async () => {
@@ -44,13 +45,12 @@ export class News extends Component {
     }&apiKey=599835b49bbf487993543a0f15508904&page=${
       this.state.page + 1
     }&pageSize=${this.props.pageSize}`;
-    
+
     let data = await fetch(url);
     let parsedData = await data.json();
     this.setState({
       articles: this.state.articles.concat(parsedData.articles),
       totalResults: parsedData.totalResults,
-      
     });
     console.log(parsedData);
   };
@@ -63,7 +63,7 @@ export class News extends Component {
           {this.props.category.charAt(0).toUpperCase() +
             this.props.category.slice(1).toLowerCase()}
         </h1>
-            {this.state.loading && <Spinner/>}
+        {this.state.loading && <Spinner />}
         <InfiniteScroll
           dataLength={this.state.articles.length}
           next={this.fetchMoreData}
