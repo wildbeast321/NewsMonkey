@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 
 export class Newsitem extends Component {
+
+  
+  
+
+
   render() {
     let { title, description, imgurl, newsurl, author, date, sources } =
       this.props;
     return (
-      <div className="card">
+      <div className={`card text-bg-dark`}>
         <img
           src={
             !imgurl
@@ -26,9 +31,8 @@ export class Newsitem extends Component {
           <h5 className="card-title"> {title}...</h5>
           <p className="card-text">{description}...</p>
           <p className="card-text">
-            <small className="text-muted">
-              By {!author ? "Unknown" : author} on
-              {new Date(date).toGMTString()}
+            <small className="text-muted-light">
+              By {!author ? "Unknown" : author} on {new Date(date).toGMTString()}
             </small>
           </p>
           <a

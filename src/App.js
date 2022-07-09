@@ -52,9 +52,11 @@ export default class App extends Component {
       Country: "jp",
     });
   };
-
+pageSize=6
   render() {
+     
     return (
+
       <Router>
         <Navbar
           modeName={this.state.modeName}
@@ -74,7 +76,7 @@ export default class App extends Component {
                 key={`Business/${this.state.Country}`}
                 headercolor={this.state.headercolor}
                 btnpncolor={this.state.btnpncolor}
-                pageSize={9}
+                pageSize={this.pageSize}
                 Country={this.state.Country}
                 category="business"
               />
@@ -88,7 +90,7 @@ export default class App extends Component {
                 key={`Entertainment/${this.state.Country}`}
                 headercolor={this.state.headercolor}
                 btnpncolor={this.state.btnpncolor}
-                pageSize={9}
+                pageSize={this.pageSize}
                 Country={this.state.Country}
                 category="entertainment"
               />
@@ -102,7 +104,7 @@ export default class App extends Component {
                 key={`${this.state.Country}`}
                 headercolor={this.state.headercolor}
                 btnpncolor={this.state.btnpncolor}
-                pageSize={9}
+                pageSize={this.pageSize}
                 Country={this.state.Country}
                 category="general"
               />
@@ -116,7 +118,7 @@ export default class App extends Component {
                 key={`Health/${this.state.Country}`}
                 headercolor={this.state.headercolor}
                 btnpncolor={this.state.btnpncolor}
-                pageSize={9}
+                pageSize={this.pageSize}
                 Country={this.state.Country}
                 category="health"
               />
@@ -130,7 +132,7 @@ export default class App extends Component {
                 key={`Science/${this.state.Country}`}
                 headercolor={this.state.headercolor}
                 btnpncolor={this.state.btnpncolor}
-                pageSize={9}
+                pageSize={this.pageSize}
                 Country={this.state.Country}
                 category="science"
               />
@@ -144,7 +146,7 @@ export default class App extends Component {
                 key={`Sports/${this.state.Country}`}
                 headercolor={this.state.headercolor}
                 btnpncolor={this.state.btnpncolor}
-                pageSize={9}
+                pageSize={this.pageSize}
                 Country={this.state.Country}
                 category="sports"
               />
@@ -158,7 +160,7 @@ export default class App extends Component {
                 key={`Technology/${this.state.Country}`}
                 headercolor={this.state.headercolor}
                 btnpncolor={this.state.btnpncolor}
-                pageSize={9}
+                pageSize={this.pageSize}
                 Country={this.state.Country}
                 category="technology"
               />

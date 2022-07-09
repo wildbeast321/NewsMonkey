@@ -5,7 +5,7 @@ export default class spinner extends Component {
   render() {
     return (
       <div className="container d-flex justify-content-center">
-        <img src={loading} alt="loading" />
+        <img className="my-4" src={loading} alt="loading" />
       </div>
     );
   }
