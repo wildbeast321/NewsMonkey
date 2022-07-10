@@ -1,185 +1,165 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Navbar from "./component/Navbar";
 import News from "./component/News";
 import LoadingBar from "react-top-loading-bar";
 
-export default class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      modeName: "Light Mode",
-      mode: "light",
-      textcolor: "dark",
-      headercolor: "dark",
-      btnpncolor: "primary",
-      Country: "in",
-      progress: 0,
-    };
-  }
-  apikey=process.env.REACT_APP_NEWS_API
-  handleMode = () => {
-    if (this.state.modeName === "Light Mode") {
+const App = () => {
+  const [modeName, setmodeName] = useState("Light Mode");
+  const [mode, setmode] = useState("light");
+  const [textcolor, settextcolor] = useState("dark");
+  const [headercolor, setheadercolor] = useState("dark");
+  const [Country, setCountry] = useState("in");
+  const [progress, setProgress] = useState(0);
+
+  const apikey = process.env.REACT_APP_NEWS_API;
+  const handleMode = () => {
+    if (modeName === "Light Mode") {
       document.body.style.backgroundColor = "rgb(50,50,50)";
-      this.setState({
-        modeName: "Dark Mode",
-        mode: "dark",
-        textcolor: "light",
-        headercolor: "light",
-        btnpncolor: "danger",
-      });
-    } else if (this.state.modeName === "Dark Mode") {
+      setmodeName("Dark Mode");
+      setmode("dark");
+      settextcolor("light");
+      setheadercolor("light");
+    } else if (modeName === "Dark Mode") {
       document.body.style.backgroundColor = "rgb(255,255,255)";
-      this.setState({
-        modeName: "Light Mode",
-        mode: "light",
-        textcolor: "dark",
-        headercolor: "dark",
-        btnpncolor: "primary",
-      });
+      setmodeName("Light Mode");
+      setmode("light");
+      settextcolor("dark");
+      setheadercolor("dark");
     }
   };
-  handlecountryin = () => {
-    this.setState({
-      Country: "in",
-    });
+  const handlecountryin = () => {
+    setCountry("in");
   };
-  handlecountryus = () => {
-    this.setState({
-      Country: "us",
-    });
+  const handlecountryus = () => {
+    setCountry("us");
   };
-  handlecountryjp = () => {
-    this.setState({
-      Country: "jp",
-    });
+  const handlecountryjp = () => {
+    setCountry("jp");
   };
-  pageSize = 6;
-  setProgress = (progress) => {
-    this.setState({ progress: progress });
-  };
-  render() {
-    return (
-      <Router>
-        <Navbar
-          modeName={this.state.modeName}
-          mode={this.state.mode}
-          textcolor={this.state.textcolor}
-          handleMode={this.handleMode}
-          handlecountryjp={this.handlecountryjp}
-          handlecountryin={this.handlecountryin}
-          handlecountryus={this.handlecountryus}
+  const pageSize = 6;
+
+  return (
+    <Router>
+      <Navbar
+        modeName={modeName}
+        mode={mode}
+        textcolor={textcolor}
+        handleMode={handleMode}
+        handlecountryjp={handlecountryjp}
+        handlecountryin={handlecountryin}
+        handlecountryus={handlecountryus}
+      />
+      <LoadingBar height={3} color="#f11946" progress={progress} />
+      <Routes>
+        <Route
+          exact
+          path="/Business"
+          element={
+            <News
+              setProgress={setProgress}
+              apikey={apikey}
+              key={`Business/${Country}`}
+              headercolor={headercolor}
+              pageSize={pageSize}
+              Country={Country}
+              category="business"
+            />
+          }
         />
-        <LoadingBar height={3} color="#f11946" progress={this.state.progress} />
-        <Routes>
-          <Route
-            exact
-            path="/Business"
-            element={
-              <News
-                setProgress={this.setProgress} apikey={this.apikey}
-                key={`Business/${this.state.Country}`}
-                headercolor={this.state.headercolor}
-                btnpncolor={this.state.btnpncolor}
-                pageSize={this.pageSize}
-                Country={this.state.Country}
-                category="business"
-              />
-            }
-          />
-          <Route
-            exact
-            path="/Entertainment"
-            element={
-              <News
-                setProgress={this.setProgress} apikey={this.apikey}
-                key={`Entertainment/${this.state.Country}`}
-                headercolor={this.state.headercolor}
-                btnpncolor={this.state.btnpncolor}
-                pageSize={this.pageSize}
-                Country={this.state.Country}
-                category="entertainment"
-              />
-            }
-          />
-          <Route
-            exact
-            path="/"
-            element={
-              <News
-                setProgress={this.setProgress} apikey={this.apikey}
-                key={`${this.state.Country}`}
-                headercolor={this.state.headercolor}
-                btnpncolor={this.state.btnpncolor}
-                pageSize={this.pageSize}
-                Country={this.state.Country}
-                category="general"
-              />
-            }
-          />
-          <Route
-            exact
-            path="/Health"
-            element={
-              <News
-                setProgress={this.setProgress} apikey={this.apikey}
-                key={`Health/${this.state.Country}`}
-                headercolor={this.state.headercolor}
-                btnpncolor={this.state.btnpncolor}
-                pageSize={this.pageSize}
-                Country={this.state.Country}
-                category="health"
-              />
-            }
-          />
-          <Route
-            exact
-            path="/Science"
-            element={
-              <News
-                setProgress={this.setProgress} apikey={this.apikey}
-                key={`Science/${this.state.Country}`}
-                headercolor={this.state.headercolor}
-                btnpncolor={this.state.btnpncolor}
-                pageSize={this.pageSize}
-                Country={this.state.Country}
-                category="science"
-              />
-            }
-          />
-          <Route
-            exact
-            path="/Sports"
-            element={
-              <News
-                setProgress={this.setProgress} apikey={this.apikey}
-                key={`Sports/${this.state.Country}`}
-                headercolor={this.state.headercolor}
-                btnpncolor={this.state.btnpncolor}
-                pageSize={this.pageSize}
-                Country={this.state.Country}
-                category="sports"
-              />
-            }
-          />
-          <Route
-            exact
-            path="/Technology"
-            element={
-              <News
-                setProgress={this.setProgress} apikey={this.apikey}
-                key={`Technology/${this.state.Country}`}
-                headercolor={this.state.headercolor}
-                btnpncolor={this.state.btnpncolor}
-                pageSize={this.pageSize}
-                Country={this.state.Country}
-                category="technology"
-              />
-            }
-          />
-        </Routes>
-      </Router>
-    );
-  }
-}
+        <Route
+          exact
+          path="/Entertainment"
+          element={
+            <News
+              setProgress={setProgress}
+              apikey={apikey}
+              key={`Entertainment/${Country}`}
+              headercolor={headercolor}
+              pageSize={pageSize}
+              Country={Country}
+              category="entertainment"
+            />
+          }
+        />
+        <Route
+          exact
+          path="/"
+          element={
+            <News
+              setProgress={setProgress}
+              apikey={apikey}
+              key={`${Country}`}
+              headercolor={headercolor}
+              pageSize={pageSize}
+              Country={Country}
+              category="general"
+            />
+          }
+        />
+        <Route
+          exact
+          path="/Health"
+          element={
+            <News
+              setProgress={setProgress}
+              apikey={apikey}
+              key={`Health/${Country}`}
+              headercolor={headercolor}
+              pageSize={pageSize}
+              Country={Country}
+              category="health"
+            />
+          }
+        />
+        <Route
+          exact
+          path="/Science"
+          element={
+            <News
+              setProgress={setProgress}
+              apikey={apikey}
+              key={`Science/${Country}`}
+              headercolor={headercolor}
+              pageSize={pageSize}
+              Country={Country}
+              category="science"
+            />
+          }
+        />
+        <Route
+          exact
+          path="/Sports"
+          element={
+            <News
+              setProgress={setProgress}
+              apikey={apikey}
+              key={`Sports/${Country}`}
+              headercolor={headercolor}
+              pageSize={pageSize}
+              Country={Country}
+              category="sports"
+            />
+          }
+        />
+        <Route
+          exact
+          path="/Technology"
+          element={
+            <News
+              setProgress={setProgress}
+              apikey={apikey}
+              key={`Technology/${Country}`}
+              headercolor={headercolor}
+              pageSize={pageSize}
+              Country={Country}
+              category="technology"
+            />
+          }
+        />
+      </Routes>
+    </Router>
+  );
+};
+export default App;
