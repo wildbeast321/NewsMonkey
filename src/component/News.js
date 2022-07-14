@@ -80,6 +80,8 @@ const News = (props) => {
                     imgurl={element.urlToImage}
                     newsurl={element.url}
                     sources={element.source.name}
+                    cardcolor={props.cardcolor}
+                    btncolor={props.btncolor}
                   />
                 </div>
               );

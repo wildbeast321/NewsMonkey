@@ -12,6 +12,8 @@ const App = () => {
   const [headercolor, setheadercolor] = useState("dark");
   const [Country, setCountry] = useState("in");
   const [progress, setProgress] = useState(0);
+  const [cardcolor, setcardcolor] = useState("text-bg-light");
+  const [btncolor, setbtncolor] = useState("primary");
 
   const apikey = process.env.REACT_APP_NEWS_API;
   const handleMode = () => {
@@ -21,12 +23,16 @@ const App = () => {
       setmode("dark");
       settextcolor("light");
       setheadercolor("light");
+      setcardcolor("text-bg-dark");
+      setbtncolor("danger")
     } else if (modeName === "Dark Mode") {
       document.body.style.backgroundColor = "rgb(255,255,255)";
       setmodeName("Light Mode");
       setmode("light");
       settextcolor("dark");
       setheadercolor("dark");
+      setcardcolor("text-bg-light");
+      setbtncolor("primary");
     }
   };
   const handlecountryin = () => {
@@ -64,6 +70,8 @@ const App = () => {
               headercolor={headercolor}
               pageSize={pageSize}
               Country={Country}
+              cardcolor={cardcolor}
+              btncolor={btncolor}
               category="business"
             />
           }
@@ -79,6 +87,8 @@ const App = () => {
               headercolor={headercolor}
               pageSize={pageSize}
               Country={Country}
+              cardcolor={cardcolor}
+              btncolor={btncolor}
               category="entertainment"
             />
           }
@@ -94,6 +104,8 @@ const App = () => {
               headercolor={headercolor}
               pageSize={pageSize}
               Country={Country}
+              cardcolor={cardcolor}
+              btncolor={btncolor}
               category="general"
             />
           }
@@ -109,6 +121,8 @@ const App = () => {
               headercolor={headercolor}
               pageSize={pageSize}
               Country={Country}
+              cardcolor={cardcolor}
+              btncolor={btncolor}
               category="health"
             />
           }
@@ -124,6 +138,8 @@ const App = () => {
               headercolor={headercolor}
               pageSize={pageSize}
               Country={Country}
+              cardcolor={cardcolor}
+              btncolor={btncolor}
               category="science"
             />
           }
@@ -139,6 +155,8 @@ const App = () => {
               headercolor={headercolor}
               pageSize={pageSize}
               Country={Country}
+              cardcolor={cardcolor}
+              btncolor={btncolor}
               category="sports"
             />
           }
@@ -154,6 +172,8 @@ const App = () => {
               headercolor={headercolor}
               pageSize={pageSize}
               Country={Country}
+              cardcolor={cardcolor}
+              btncolor={btncolor}
               category="technology"
             />
           }

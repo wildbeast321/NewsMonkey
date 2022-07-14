@@ -1,9 +1,9 @@
 import React from "react";
 
 const Newsitem = (props) => {
-  let { title, description, imgurl, newsurl, author, date, sources } = props;
+  let { title, description, imgurl, newsurl, author, date, sources,cardcolor, btncolor } = props;
   return (
-    <div className={`card text-bg-dark`}>
+    <div className={`card  ${cardcolor} `}>
       <div
         style={{
           display: "flex",
@@ -13,7 +13,7 @@ const Newsitem = (props) => {
         }}
       >
         <span
-          className=" badge rounded-pill bg-danger"
+          className={` badge rounded-pill bg-${btncolor}`}
           style={{ left: "85%", zIndex: "1" }}
         >
           {sources}
@@ -42,7 +42,7 @@ const Newsitem = (props) => {
           href={newsurl}
           target="_blank"
           rel="noreferrer"
-          className="btn btn-sm btn-danger"
+          className={`btn btn-sm btn-${btncolor}`}
         >
           Read More
         </a>
